@@ -13,20 +13,13 @@
 
   def attack!(enemy)
 
-    case enemy
-      when enemy.is_a?(Barracks) then enemy.damage(@attack_power / 2)
-      when 
-      when condition then 
-      else raise DeadError, "Attacker is dead!" if dead? ;
-    
-
-    # if enemy.is_a?(Barracks)
-    #  enemy.damage(@attack_power / 2)
-    # else
-    #   raise DeadError, "Attacker is dead!" if dead?
-    #   raise DeadError, "Victim is dead!" if enemy.dead?
-    #  enemy.damage(@attack_power)
-    # end
+    if enemy.is_a?(Barracks)
+     enemy.damage(@attack_power / 2)
+    else
+      raise DeadError, "Attacker is dead!" if dead?
+      raise DeadError, "Victim is dead!" if enemy.dead?
+     enemy.damage(@attack_power)
+    end
 
   end
 
