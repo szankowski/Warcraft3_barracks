@@ -1,4 +1,7 @@
   # require ""
+  class DeadError < StandardError
+  end
+
   class Unit
   attr_reader :health_points, :attack_power
   def initialize(health_points, attack_power)
@@ -9,11 +12,30 @@
   end
 
   def attack!(enemy)
-    enemy.damage(@attack_power)        
+
+    case enemy
+      when enemy.is_a?(Barracks) then enemy.damage(@attack_power / 2)
+      when 
+      when condition then 
+      else raise DeadError, "Attacker is dead!" if dead? ;
+    
+
+    # if enemy.is_a?(Barracks)
+    #  enemy.damage(@attack_power / 2)
+    # else
+    #   raise DeadError, "Attacker is dead!" if dead?
+    #   raise DeadError, "Victim is dead!" if enemy.dead?
+    #  enemy.damage(@attack_power)
+    # end
+
   end
 
   def damage(dmg)
     @health_points -= dmg
+  end
+
+  def dead?
+    @health_points == 0  
   end
 
 end

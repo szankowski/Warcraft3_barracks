@@ -8,4 +8,3 @@ class Footman < Unit
   end
 
 end
-
