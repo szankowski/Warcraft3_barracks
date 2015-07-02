@@ -22,16 +22,17 @@ describe SiegeEngine do
       expect(@barrack.health_points).to eq(400) # starts at 800
     end
 
-    # it "should be able attack other SiegeEngine " do
+    it "should be able attack other SiegeEngine " do
+      @siege_engine2 = SiegeEngine.new
+      @siege_engine.attack!(@siege_engine2)
+      expect(@siege_engine2.health_points).to eq(350) # starts at 800
+    end
 
-    #   @siege_engine.attack!(@siege_engine2)
-    #   expect(@barrack.health_points).to eq(400) # starts at 800
-    #end
-
-    # it "should not attack other units (unless its)" do
-    #   @siege_engine.attack!(@barrack)
-    #   expect(@barrack.health_points).to eq(400) # starts at 800
-    # end
+    it "should not attack other units (unless its)" do
+       @footman = Footman.new
+       @siege_engine.attack!(@footman)
+       expect(@footman.health_points).to eq(60) # starts at 800
+    end
 
   end
 
